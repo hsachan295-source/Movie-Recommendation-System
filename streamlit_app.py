@@ -325,7 +325,9 @@ def get_genre_gradient(genres_str):
 def clean_genres(genres_str):
     if not genres_str:
          return 'Cinema'
-    return genres_str.replace(/[\[\]']/g, '').split(',')[0].strip()
+    # Clean brackets and quotes safely in Python
+    cleaned = str(genres_str).replace('[', '').replace(']', '').replace("'", "").replace('"', '')
+    return cleaned.split(',')[0].strip()
 
 def get_recommendations(title):
     """Core TF-IDF similarity matcher returning the top 10 matches"""
@@ -392,10 +394,9 @@ if selected_title or search_button:
             if query_movie is None:
                 st.error("Movie not found in the database.")
             else:
-                # A. Render Selected Movie Banner
                 grad, accent, emoji = get_genre_gradient(query_movie['genres'])
-                
-                genres_html = "".join([f'<span class="genre-tag">{g.strip()}</span>' for g in query_movie['genres'].replace(/[\[\]']/g, '').split(',') if g.strip()])
+                cleaned_genres = str(query_movie['genres']).replace('[', '').replace(']', '').replace("'", "").replace('"', '')
+                genres_html = "".join([f'<span class="genre-tag">{g.strip()}</span>' for g in cleaned_genres.split(',') if g.strip()])
                 rating_str = f"⭐ {query_movie['vote_average']:.1f} / 10" if query_movie['vote_average'] > 0 else "No Rating"
                 
                 banner_html = f"""
