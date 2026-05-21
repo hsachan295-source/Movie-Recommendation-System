@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CineSuggest is a premium AI-powered Movie Recommendation System that finds similar films in seconds using content-based TF-IDF vectorization.">
+    <title>CineSuggest // Premium AI Movie Recommendation System</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- App Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Immersive Animated Background Glows -->
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+    <div class="bg-glow bg-glow-3"></div>
+
+    <!-- Main Navigation Header -->
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand" id="brand-logo">
+                <i class="fa-solid fa-clapperboard logo-icon"></i>
+                <span class="brand-text">Cine<span class="accent-text">Suggest</span></span>
+            </div>
+            
+            <div class="search-container">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input 
+                        type="text" 
+                        id="movie-search-input" 
+                        placeholder="Search movies (e.g. Toy Story, Inception...)" 
+                        autocomplete="off"
+                    >
+                    <button id="clear-search-btn" class="clear-btn" aria-label="Clear search">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <div id="search-spinner" class="spinner hidden"></div>
+                </div>
+                <!-- Autocomplete Dropdown List -->
+                <div id="autocomplete-list" class="autocomplete-dropdown hidden"></div>
+            </div>
+            
+            <div class="header-actions">
+                <a href="#" class="github-link" target="_blank" title="GitHub Repository">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="app-main">
+        
+        <!-- Onboarding Hero Section (Visible before a search) -->
+        <section id="onboarding-section" class="hero-section">
+            <div class="hero-content">
+                <div class="badge">AI-Powered Content Matcher</div>
+                <h1 class="hero-title">Find Your Next <br><span class="gradient-text">Cinematic Obsession</span></h1>
+                <p class="hero-subtitle">
+                    Enter any movie title, and our advanced machine learning algorithm will analyze over 39,000 films to recommend 10 mathematically similar titles based on genres, storylines, and key themes.
+                </p>
+                
+                <!-- Quick Start Cards -->
+                <div class="quick-start-container">
+                    <h2 class="quick-start-title"><i class="fa-solid fa-fire accent-icon"></i> Try a Popular Movie to Begin:</h2>
+                    <div class="quick-start-grid">
+                        <button class="quick-start-card" data-movie="Toy Story">
+                            <span class="qs-badge animated-bg-1">Family</span>
+                            <span class="qs-title">Toy Story</span>
+                        </button>
+                        <button class="quick-start-card" data-movie="The Dark Knight">
+                            <span class="qs-badge animated-bg-2">Action</span>
+                            <span class="qs-title">The Dark Knight</span>
+                        </button>
+                        <button class="quick-start-card" data-movie="Inception">
+                            <span class="qs-badge animated-bg-3">Sci-Fi</span>
+                            <span class="qs-title">Inception</span>
+                        </button>
+                        <button class="quick-start-card" data-movie="Interstellar">
+                            <span class="qs-badge animated-bg-4">Adventure</span>
+                            <span class="qs-title">Interstellar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Recommendation Content (Hidden initially) -->
+        <section id="recommendations-section" class="results-section hidden">
+            <!-- Selected Movie banner card -->
+            <div class="query-movie-banner" id="query-movie-container">
+                <!-- Injected dynamically by JavaScript -->
+            </div>
+            
+            <!-- Recommendations Title & Grid -->
+            <div class="rec-header">
+                <h2 class="section-title">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> 
+                    Recommended for You
+                </h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="movie-grid" id="recommendations-grid">
+                <!-- Injected dynamically by JavaScript -->
+            </div>
+        </section>
+
+        <!-- Loading State Overlay -->
+        <div id="global-loader" class="loader-overlay hidden">
+            <div class="loader-content">
+                <div class="cinematic-spinner"></div>
+                <p class="loader-text">Analyzing 39,700 plot points & tags...</p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Movie Details Modal -->
+    <div id="movie-detail-modal" class="modal-overlay hidden" aria-hidden="true" role="dialog">
+        <div class="modal-card">
+            <button id="modal-close-btn" class="modal-close-btn" aria-label="Close details">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="modal-body" id="modal-content-area">
+                <!-- Injected dynamically by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- App Footer -->
+    <footer class="app-footer">
+        <p class="footer-copy">&copy; 2026 CineSuggest. Powered by Content-Based Filtering, Cosine Similarity & TF-IDF Vectorization.</p>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

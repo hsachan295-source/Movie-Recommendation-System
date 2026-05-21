@@ -1,0 +1,17 @@
+# Python virtual environments & caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+ENV/
+
+# Large Dataset Binaries (must be kept local)
+*.pkl
+
+# IDE / System files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
