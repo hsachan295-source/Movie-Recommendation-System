@@ -7,9 +7,6 @@ __pycache__/
 venv/
 ENV/
 
-# Large Dataset Binaries (must be kept local)
-*.pkl
-
 # IDE / System files
 .vscode/
 .idea/
