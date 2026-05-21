@@ -343,6 +343,7 @@ def get_recommendations(title):
         movie_idx = indices[title]
         if isinstance(movie_idx, pd.Series):
             movie_idx = movie_idx.iloc[0]
+        movie_idx = int(movie_idx)  # Ensure integer for safe iloc indexing
             
         sim_scores = tfidf_matrix[movie_idx].dot(tfidf_matrix.T).toarray()[0]
         sim_scores = list(enumerate(sim_scores))
@@ -350,7 +351,7 @@ def get_recommendations(title):
         
         # Exclude self, take top 10
         sim_scores = [x for x in sim_scores if x[0] != movie_idx][:10]
-        movie_indices = [i[0] for i in sim_scores]
+        movie_indices = [int(i[0]) for i in sim_scores]
         
         return df.iloc[movie_idx], df.iloc[movie_indices]
     except Exception as e:
@@ -374,12 +375,12 @@ with col2:
         placeholder="Type or select a movie title (e.g. Toy Story, Inception...)",
         label_visibility="collapsed"
     )
-    
-    st.markdown('<div style="height:15px;"></div>', unsafe_allow_html=True)
-    
-    btn_col1, btn_col2, btn_col3 = st.columns([1, 1, 1])
-    with btn_col2:
-        search_button = st.button("✨ Match Similar", use_container_width=True)
+
+st.markdown('<div style="height:10px;"></div>', unsafe_allow_html=True)
+
+btn_left, btn_center, btn_right = st.columns([2, 1, 2])
+with btn_center:
+    search_button = st.button("✨ Match Similar", use_container_width=True)
 
 st.markdown('<hr style="border: 0; height: 1px; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(124,58,237,0.3) 50%, rgba(255,255,255,0) 100%); margin: 40px 0;">', unsafe_allow_html=True)
 
