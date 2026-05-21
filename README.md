@@ -1,6 +1,18 @@
 # CineSuggest // Premium AI Movie Recommendation System
 
+[![Live Demo](https://img.shields.io/badge/🚀%20Live%20Demo-Render-6366f1?style=for-the-badge&logo=render&logoColor=white)](https://movie-recommendation-system-5gbq.onrender.com)
+[![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
+[![Flask](https://img.shields.io/badge/Flask-3.1-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com)
+
 CineSuggest is a cinematic, state-of-the-art Single-Page Web Application (SPA) that recommends mathematically similar movies based on content features (genres, plot overviews, and story tags). It combines a highly optimized Python recommendation engine with a highly polished modern user interface featuring translucent glassmorphism panels, glowing neon accents, and smooth micro-animations.
+
+---
+
+## 🌐 Live Demo
+
+**🎬 Try it live here → [https://movie-recommendation-system-5gbq.onrender.com](https://movie-recommendation-system-5gbq.onrender.com)**
+
+> ⚠️ Hosted on Render free tier — the app may take **~30 seconds to wake up** on first visit if it has been idle.
 
 ---
 
